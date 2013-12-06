@@ -84,7 +84,7 @@ end
 
 
 logcmd='logcat -v time -b radio'
-dialcmd='service call phone 2 s16 "13617311628"'
+dialcmd='service call phone 2 s16 "18975184038"'
 hangupcmd='input keyevent KEYCODE_ENDCALL'
 
 gsmDialing='CLCC: 1,0,2'
@@ -104,8 +104,14 @@ logsh.chkon=true
 
 dialsh.runCmd( dialcmd )
 
+t0 = Time.now
+
 while (1>logsh.chkcount ) do
-end
+  break if Time.now - t0 > 5
+end 
+
+puts Time.now - t0
+
 
 dialsh.runCmd( hangupcmd )
 
